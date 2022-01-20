@@ -142,7 +142,7 @@ class MineRLTreechopv1(gym.Env):
     def compute_obs(self,new_obs):
         del self.obs_seq[0]
         self.obs_seq.append(np.mean(new_obs,axis=2))
-        return np.transpose(np.array(self.obs_seq),(1,2,0))
+        return {'pov':np.transpose(np.array(self.obs_seq),(1,2,0))}
 
     def step(self,a_box,exploration_policy=True,always_forward=True):
         #Unpack a_box
