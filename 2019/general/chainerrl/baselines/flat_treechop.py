@@ -222,6 +222,6 @@ from gym.envs.registration import register
 
 register(
     id=f"MineRLTreechop-v1",
-    entry_point="__main__:MineRLTreechopv1",
+    entry_point="flat_treechop:MineRLTreechopv1",
     kwargs={},
 )
