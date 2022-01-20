@@ -137,7 +137,7 @@ class MineRLTreechopv1(gym.Env):
             self.obs_seq = [np.mean(o['pov'].copy(),axis=2) for i in range(self.nb_img_input)]
             return self.compute_obs(o['pov'].copy())
         print('FAST RESET')
-        return self.compute_obs(self.obs['pov'].copy())
+        return self.obs
 
     def compute_obs(self,new_obs):
         del self.obs_seq[0]
@@ -198,7 +198,7 @@ class MineRLTreechopv1(gym.Env):
         #Artificially asks to reset the environement for RLLIB to compute return and learn
         if self.time % 4000 == 0:
             d = True
-        return self.compute_obs(o['pov'].copy()),r,d,i
+        return o,r,d,i
     def render(self,*args,**kwargs):
         #Renders the env
         out = self.env.render(*args,**kwargs)
