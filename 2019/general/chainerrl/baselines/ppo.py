@@ -38,7 +38,7 @@ def parse_arch(arch, n_actions, n_input_channels):
         raise RuntimeError('Unsupported architecture name: {}'.format(arch))
     return A3CFF(n_actions, head)
 
-
+import flat_treechop
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--env', type=str, default='MineRLTreechop-v0',
