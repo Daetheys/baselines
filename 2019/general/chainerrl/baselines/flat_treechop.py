@@ -2,6 +2,7 @@ from minerl.herobraine.env_specs.simple_embodiment import SimpleEmbodimentEnvSpe
 from minerl.herobraine.hero.handler import Handler
 import minerl.herobraine.hero.handlers as handlers
 from typing import List
+import gym
 
 TC_DOC = """
 Treechop infinite env
