@@ -51,6 +51,7 @@ def main():
                             # for debug use
                             'MineRLNavigateDenseFixed-v0',
                             'MineRLObtainTest-v0',
+                            'MineRLTreechop-v1'
                         ],
                         help='MineRL environment identifier.')
     parser.add_argument('--outdir', type=str, default='results',
