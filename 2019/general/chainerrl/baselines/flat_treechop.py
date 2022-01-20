@@ -3,6 +3,7 @@ from minerl.herobraine.hero.handler import Handler
 import minerl.herobraine.hero.handlers as handlers
 from typing import List
 import gym
+import numpy as np
 
 TC_DOC = """
 Treechop infinite env
