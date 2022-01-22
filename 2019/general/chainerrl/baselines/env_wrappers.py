@@ -515,8 +515,8 @@ class SerialDiscreteActionWrapper(gym.ActionWrapper):
                     if i < self.num_camera_discretize // 2:
                         op[key] = np.array([0, -max_camera_range + delta_range * i], dtype=np.float32)
                     elif i > self.num_camera_discretize // 2:
-                        op[key] = np.array([0, -max_camera_range + delta_range * (i - 1)], dtype=np.float32)
-                        #op[key] = np.array([0, -max_camera_range + delta_range * i], dtype=np.float32)
+                        #op[key] = np.array([0, -max_camera_range + delta_range * (i - 1)], dtype=np.float32)
+                        op[key] = np.array([0, -max_camera_range + delta_range * i], dtype=np.float32)
                     else:
                         continue
                     self._actions.append(op)
@@ -527,8 +527,8 @@ class SerialDiscreteActionWrapper(gym.ActionWrapper):
                         if i < self.num_camera_discretize // 2:
                             op[key] = np.array([-max_camera_range + delta_range * i, 0], dtype=np.float32)
                         elif i > self.num_camera_discretize // 2:
-                            op[key] = np.array([-max_camera_range + delta_range * (i - 1), 0], dtype=np.float32)
-                            #op[key] = np.array([-max_camera_range + delta_range * i, 0], dtype=np.float32)
+                            #op[key] = np.array([-max_camera_range + delta_range * (i - 1), 0], dtype=np.float32)
+                            op[key] = np.array([-max_camera_range + delta_range * i, 0], dtype=np.float32)
                         else:
                             continue
                         self._actions.append(op)
