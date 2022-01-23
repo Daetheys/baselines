@@ -547,12 +547,12 @@ class SerialDiscreteActionWrapper(gym.ActionWrapper):
         logger.info('{} is converted to {}.'.format(self.wrapping_action_space, self.action_space))
 
     def action(self, action):
-        print('-action',action)
+        #print('-action',action)
         if not self.action_space.contains(action):
             raise ValueError('action {} is invalid for {}'.format(action, self.action_space))
-        print(self._actions)
+        #print(self._actions)
         original_space_action = self._actions[action]
-        print(original_space_action)
+        #print(original_space_action)
         logger.debug('discrete action {} -> original action {}'.format(action, original_space_action))
         return original_space_action
 
