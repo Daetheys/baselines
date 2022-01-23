@@ -21,8 +21,8 @@ class TreechopFlat(SimpleEmbodimentEnvSpec):
                          max_episode_steps=INFTY, reward_threshold=INFTY,
                          **kwargs)
         
-    def _entry_point(self,fake=False):
-        return "__main__:_SingleAgentEnv"
+    #def _entry_point(self,fake=False):
+    #    return "__main__:_SingleAgentEnv"
 
     def create_rewardables(self) -> List[Handler]:
         return [
