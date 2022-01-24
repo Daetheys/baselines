@@ -464,6 +464,8 @@ class SerialDiscreteActionWrapper(gym.ActionWrapper):
             ('nearbySmelt', 0),
         ])
         for key, space in self.wrapping_action_space.spaces.items():
+            if key == 'chat':
+                continue
             if key not in self._noop_template:
                 raise ValueError('Unknown action name: {}'.format(key))
 
