@@ -525,15 +525,17 @@ class SerialDiscreteActionWrapper(gym.ActionWrapper):
 
                 if allow_pitch:
                     for i in range(self.num_camera_discretize):
-                        op = copy.deepcopy(self.noop)
-                        if i < self.num_camera_discretize // 2:
-                            op[key] = np.array([-max_camera_range + delta_range * i, 0], dtype=np.float32)
-                        elif i > self.num_camera_discretize // 2:
-                            #op[key] = np.array([-max_camera_range + delta_range * (i - 1), 0], dtype=np.float32)
-                            op[key] = np.array([-max_camera_range + delta_range * i, 0], dtype=np.float32)
-                        else:
-                            continue
-                        self._actions.append(op)
+                        for j in range(2):
+                            op = copy.deepcopy(self.noop)
+                            op['forward'] = j
+                            if i < self.num_camera_discretize // 2:
+                                op[key] = np.array([-max_camera_range + delta_range * i, 0], dtype=np.float32)
+                            elif i > self.num_camera_discretize // 2:
+                                #op[key] = np.array([-max_camera_range + delta_range * (i - 1), 0], dtype=np.float32)
+                                op[key] = np.array([-max_camera_range + delta_range * i, 0], dtype=np.float32)
+                            else:
+                                continue
+                            self._actions.append(op)
 
             elif key in {'place', 'equip', 'craft', 'nearbyCraft', 'nearbySmelt'}:
                 # action candidate : {1, 2, ..., len(space)-1}  (0 is ignored because it is for noop)
