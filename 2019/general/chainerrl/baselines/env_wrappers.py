@@ -513,15 +513,17 @@ class SerialDiscreteActionWrapper(gym.ActionWrapper):
                 if self.num_camera_discretize % 2 == 0:
                     raise ValueError('Number of camera discretization must be odd.')
                 for i in range(self.num_camera_discretize):
-                    op = copy.deepcopy(self.noop)
-                    if i < self.num_camera_discretize // 2:
-                        op[key] = np.array([0, -max_camera_range + delta_range * i], dtype=np.float32)
-                    elif i > self.num_camera_discretize // 2:
-                        #op[key] = np.array([0, -max_camera_range + delta_range * (i - 1)], dtype=np.float32)
-                        op[key] = np.array([0, -max_camera_range + delta_range * i], dtype=np.float32)
-                    else:
-                        continue
-                    self._actions.append(op)
+                    for j in range(2):
+                        op = copy.deepcopy(self.noop)
+                        op['forward'] = j
+                        if i < self.num_camera_discretize // 2:
+                            op[key] = np.array([0, -max_camera_range + delta_range * i], dtype=np.float32)
+                        elif i > self.num_camera_discretize // 2:
+                            #op[key] = np.array([0, -max_camera_range + delta_range * (i - 1)], dtype=np.float32)
+                            op[key] = np.array([0, -max_camera_range + delta_range * i], dtype=np.float32)
+                        else:
+                            continue
+                        self._actions.append(op)
 
                 if allow_pitch:
                     for i in range(self.num_camera_discretize):
